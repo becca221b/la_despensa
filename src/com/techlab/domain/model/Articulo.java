@@ -9,12 +9,19 @@ public class Articulo {
     private int cantidadStock;
 
     
-    //Constructor sin id (para crear un nuevo producto)
-    public Articulo(String nombre, double precio, int cantidadStock) {
+    
+    public Articulo(int id, String nombre, double precio, int cantidadStock) {
+        this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.cantidadStock = cantidadStock;
     }
+
+    public Articulo(String nombre, double precio) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidadStock = 0; // Inicializa el stock en 0 si no se proporciona
+    }       
 
     // Getters and setters
     public int getId() {
