@@ -1,12 +1,12 @@
 package com.techlab.domain.model;
 
-public class Pedido {
+public class DetalleOrden {
     private int id;
     private Articulo articulo;
     private int cantidad;
 
     // Constructor
-    public Pedido(Articulo articulo, int cantidad) {
+    public DetalleOrden(Articulo articulo, int cantidad) {
         if (cantidad <= 0) {
             throw new IllegalArgumentException("La cantidad debe ser mayor a cero.");
         }
