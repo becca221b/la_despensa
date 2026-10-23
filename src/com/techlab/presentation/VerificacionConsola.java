@@ -2,6 +2,8 @@ package com.techlab.presentation;
 
 import java.util.Scanner;
 
+import com.techlab.utils.Validaciones;
+
 public class VerificacionConsola {
 
     private VerificacionConsola() {
@@ -19,7 +21,7 @@ public class VerificacionConsola {
             }
             try {
                 int valor = Integer.parseInt(input);
-                if (valor >= 0) {
+                if (Validaciones.validarNoNegativo(valor)) {
                     return valor;
                 }
                 System.out.println("Ingrese un número entero no negativo.");
@@ -40,7 +42,7 @@ public class VerificacionConsola {
             }
             try {
                 int valor = Integer.parseInt(input);
-                if (valor > 0) {
+                if (Validaciones.validarPositivo(valor)) {
                     return valor;
                 }
                 //System.out.println("Ingrese un número entero positivo.");
@@ -61,7 +63,7 @@ public class VerificacionConsola {
             }
             try {
                 double valor = Double.parseDouble(input);
-                if (valor > 0) {
+                if (Validaciones.validarPositivo(valor)) {
                     return valor;
                 }
                 System.out.println("Ingrese un número positivo.");
@@ -77,7 +79,7 @@ public class VerificacionConsola {
             System.out.print(mensaje);
             String input = scanner.nextLine().trim();
 
-            if (!input.isEmpty()) {
+            if (Validaciones.validarTextoNoVacio(input)) {
                 return input;
             }
             System.out.println("El valor no puede estar vacío. Por favor, ingrese un texto válido.");
