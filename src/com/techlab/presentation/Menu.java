@@ -2,39 +2,28 @@ package com.techlab.presentation;
 
 import java.util.Scanner;
 
-public class Menu {
-    private final ArticuloMenu productoMenu;
-    private final OrdenMenu ordenMenu;
-    private final Scanner scanner;
+public abstract class Menu {
+    protected final Scanner scanner;
 
-    public Menu(ArticuloMenu productoMenu, OrdenMenu ordenMenu, Scanner scanner) {
-        this.productoMenu = productoMenu;
-        this.ordenMenu = ordenMenu;
+    protected Menu(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public void mostrarMenuPrincipal() {
-        boolean salir = false;
-        while (!salir) {
-            System.out.println("=== Menú Principal ===");
-            System.out.println("1. Menú de Productos");
-            System.out.println("2. Menú de Órdenes");
-            System.out.println("3. Salir");
-            int opcion = Integer.parseInt(scanner.nextLine());
+    public abstract void mostrarMenu();
 
-            switch (opcion) {
-                case 1:
-                    productoMenu.mostrarMenu();
-                    break;
-                case 2:
-                    ordenMenu.mostrarMenu();
-                    break;
-                case 3:
-                    salir = true;
-                    break;
-                default:
-                    System.out.println("Opción inválida. Intente nuevamente.");
-            }
-        }
+    protected int leerEnteroNoNegativo(String mensaje) {
+        return VerificacionConsola.leerEnteroNoNegativo(mensaje, scanner);
+    }
+
+    protected int leerEnteroPositivo(String mensaje) {
+        return VerificacionConsola.leerEnteroPositivo(mensaje, scanner);
+    }
+
+    protected double leerDoublePositivo(String mensaje) {
+        return VerificacionConsola.leerDoublePositivo(mensaje, scanner);
+    }
+
+    protected String leerTextoNoVacio(String mensaje) {
+        return VerificacionConsola.leerTextoNoVacio(mensaje, scanner);
     }
 }
